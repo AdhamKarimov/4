@@ -4,9 +4,11 @@ from rest_framework.response import Response
 from .serializers import ProductSerializer
 from rest_framework.generics import GenericAPIView
 from .models import Product
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 class ProductListCreateView(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
